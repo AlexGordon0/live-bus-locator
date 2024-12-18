@@ -1,4 +1,6 @@
 # IDE-specific settings files (JetBrains), exclude from the project
 .idea
 
+*.pyc
+
 .env*
