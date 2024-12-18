@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
+import 'package:lbl_app/widgets/flutter_map.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -15,15 +15,7 @@ class _MapPageState extends State<MapPage> {
       appBar: AppBar(
         title: const Text("Map"),
       ),
-      body: FlutterMap(
-        options: const MapOptions(),
-        children: [
-          TileLayer(
-            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            userAgentPackageName: 'com.example.app',
-          ),
-        ],
-      ),
+      body: flutterMap()
     );
   }
 }
