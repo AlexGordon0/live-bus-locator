@@ -10,8 +10,16 @@ class BusService {
         await http.get(Uri.parse("$apiURL/get/location"), headers: {
       'Content-Type': 'application/json',
     });
+    print(response.statusCode);
     if (response.statusCode == 200) {
-      return json.decode(response.body);
+      print(response);
+      print(response.body);
+      var data = json.decode(response.body);
+      List<LatLng> locations = [];
+      for (var i in data) {
+        locations.add(LatLng(i[0], i[1]));
+      }
+      return locations;
     } else {
       throw Exception('Failed to get location data');
     }

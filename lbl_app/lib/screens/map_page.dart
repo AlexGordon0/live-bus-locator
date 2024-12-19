@@ -16,18 +16,19 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Map"),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  setState(() async {
-                    busLocations = await BusService().fetchLocations();
-                  });
-                },
-                icon: const Icon(Icons.refresh))
-          ],
-        ),
-        body: flutterMap(busLocations));
+      appBar: AppBar(
+        title: const Text("Map"),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              var locations = await BusService().fetchLocations();
+              setState(() {
+                busLocations = locations;
+              });
+            },
+            icon: const Icon(Icons.refresh))
+        ],
+      ),
+      body: flutterMap(busLocations));
   }
 }
